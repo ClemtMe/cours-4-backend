@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "🔍 [Pre-commit] Lancement des tests..."
+
+# Exécute le script de test existant
+bin/run_tests.sh
+
+# Récupère le code de retour
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+    echo "❌ [Pre-commit] Les tests ont échoué. Commit annulé."
+    exit 1
+fi
+
+echo "✅ [Pre-commit] Tests validés."

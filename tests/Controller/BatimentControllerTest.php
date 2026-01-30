@@ -34,6 +34,6 @@ final class BatimentControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Détails du bâtiment');
-        self::assertSelectorTextContains('tbody>tr>td', $batiment->getId());
+        self::assertSelectorTextContains('tbody>tr>td', $batiment->getAdresse());
     }
 }

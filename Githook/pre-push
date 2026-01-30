@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "🚀 [Pre-push] Lancement des tests avant le push..."
+
+# Exécute le script de test existant
+bin/run_tests.sh
+
+# Récupère le code de retour
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+    echo "❌ [Pre-push] Les tests ont échoué. Push annulé."
+    exit 1
+fi
+
+echo "✅ [Pre-push] Tests validés."
