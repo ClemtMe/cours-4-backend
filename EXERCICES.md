@@ -24,7 +24,7 @@ Listes des points attendu:
 
 Listes des points bonus
 - [X] Ajouter des test unitaire
-- [ ] un dossier Githook, avec un precommit et prepush qui execute tout les tests
+- [X] un dossier Githook, avec un precommit et prepush qui execute tout les tests
 
 Listes des point bonus si vous avez le projet sur github
-- [ ] Ajouter une Github Action qui execute phpstan/phpcs/phpunit
+- [X] Ajouter une Github Action qui execute phpstan/phpcs/phpunit
