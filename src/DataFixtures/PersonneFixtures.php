@@ -12,10 +12,8 @@ use Faker\Factory;
 
 class PersonneFixtures extends Fixture implements DependentFixtureInterface
 {
-
     public function __construct(private BatimentRepository $batimentRepository)
     {
-
     }
 
     public function load(ObjectManager $manager): void
