@@ -11,32 +11,28 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - name: Build Docker image
+      run: docker build -t my-php-app ./docker/php
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+    - name: Validate composer.json and composer.lock
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app composer validate --strict
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --ignore-platform-req=ext-redis
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app composer install --prefer-dist --no-progress --ignore-platform-req=ext-redis
+
     - name: Php code sniffer
       continue-on-error: false
-      run: composer run phpcs
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app composer run phpcs
+
     - name: Php stan
       continue-on-error: false
-      run: composer run phpstan
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app composer run phpstan
+
     - name: Tests
       continue-on-error: false
-      run: bin/run_tests.sh
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app ./run_tests.sh
