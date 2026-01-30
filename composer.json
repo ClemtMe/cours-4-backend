@@ -91,7 +91,8 @@
         "phpstan": "./vendor/bin/phpstan analyse"
     },
     "conflict": {
-        "symfony/symfony": "*"
+        "symfony/symfony": "*",
+        "doctrine/instantiator": ">=2.1.0"
     },
     "extra": {
         "symfony": {
