@@ -35,4 +35,4 @@ jobs:
 
     - name: Tests
       continue-on-error: false
-      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app ./run_tests.sh
+      run: docker run --rm -v ${{ github.workspace }}:/var/www/html my-php-app bin/run_tests.sh
