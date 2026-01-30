@@ -1,4 +1,6 @@
 {
+    "name": "cleme/cours-4",
+    "description": "proj",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
