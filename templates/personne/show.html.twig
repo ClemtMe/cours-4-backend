@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la personne{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Détails de la personne</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personne.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ personne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ personne.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ personne.age }}</td>
+            </tr>
+            <tr>
+                <th>Bâtiment</th>
+                <td>
+                    {% if personne.batiment %}
+                        <a href="{{ path('app_batiment_show', {'id': personne.batiment.id}) }}">
+                            {{ personne.batiment.adresse }} ({{ personne.batiment.type }})
+                        </a>
+                    {% else %}
+                        Aucun bâtiment assigné
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personne') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}

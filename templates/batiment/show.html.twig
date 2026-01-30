@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du bâtiment{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Détails du bâtiment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ batiment.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ batiment.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ batiment.type }}</td>
+            </tr>
+            <tr>
+                <th>Résident</th>
+                <td>
+                    {% if batiment.personnes %}
+                        <a href="{{ path('app_personne_show', {'id': batiment.personnes.id}) }}">
+                            {{ batiment.personnes.prenom }} {{ batiment.personnes.nom }}
+                        </a>
+                    {% else %}
+                        Aucun résident
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_batiment') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}

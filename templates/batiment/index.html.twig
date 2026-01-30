@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des bâtiments{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Liste des bâtiments</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for batiment in batiments %}
+            <tr>
+                <td>{{ batiment.id }}</td>
+                <td>{{ batiment.adresse }}</td>
+                <td>{{ batiment.type }}</td>
+                <td>
+                    <a href="{{ path('app_batiment_show', {'id': batiment.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun bâtiment trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
