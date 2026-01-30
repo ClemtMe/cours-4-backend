@@ -19,8 +19,14 @@ final class BatimentController extends AbstractController
     }
 
     #[Route('/batiments/{id}', name: 'app_batiment_show')]
-    public function show(Batiment $batiment): Response
+    public function show(int $id, BatimentRepository $batimentRepository): Response
     {
+        $batiment = $batimentRepository->findById($id);
+
+        if (!$batiment) {
+            throw $this->createNotFoundException('Le bâtiment demandé n\'existe pas');
+        }
+
         return $this->render('batiment/show.html.twig', [
             'batiment' => $batiment,
         ]);

@@ -16,6 +16,15 @@ class BatimentRepository extends ServiceEntityRepository
         parent::__construct($registry, Batiment::class);
     }
 
+    /**
+     * Trouve un bâtiment par son ID.
+     * Cette méthode est une alternative explicite à find($id).
+     */
+    public function findById(int $id): ?Batiment
+    {
+        return $this->find($id);
+    }
+
     //    /**
     //     * @return Batiment[] Returns an array of Batiment objects
     //     */
