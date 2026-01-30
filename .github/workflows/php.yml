@@ -32,8 +32,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
     - name: Php code sniffer
+      continue-on-error: false
       run: composer run phpcs
     - name: Php stan
+      continue-on-error: false
       run: composer run phpstan
     - name: Tests
+      continue-on-error: false
       run: bin/run_tests.sh
